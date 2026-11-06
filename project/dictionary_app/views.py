@@ -48,6 +48,19 @@ def _entry_to_dict(entry):
     }
 
 
+LAYER_STATS = [
+    {'group': 'qatlam', 'icon': 'person', 'label': 'Somatik', 'note': 'tana a’zosi nomi asosida', 'values': [(376, '46,1%'), (293, '44,7%'), (389, '26,8%'), (138, '18,6%')]},
+    {'group': 'qatlam', 'icon': 'brain', 'label': 'Kognitiv-psixologik', 'note': '', 'values': [(190, '23,3%'), (142, '21,6%'), (231, '15,9%'), (122, '16,4%')]},
+    {'group': 'qatlam', 'icon': 'mosque', 'label': 'Diniy-ma’rifiy', 'note': '', 'values': [(55, '6,7%'), (60, '9,1%'), (259, '17,8%'), (139, '18,7%')]},
+    {'group': 'qatlam', 'icon': 'scales', 'label': 'Axloqiy-ma’naviy', 'note': '', 'values': [(53, '6,5%'), (73, '11,1%'), (123, '8,5%'), (203, '27,3%')]},
+    {'group': 'qatlam', 'icon': 'ornament', 'label': 'Milliy-madaniy', 'note': '', 'values': [(113, '13,8%'), (78, '11,9%'), (309, '21,3%'), (160, '21,5%')]},
+    {'group': 'qatlam', 'icon': 'paw', 'label': 'Naturmof va zoomorf obrazli', 'note': '', 'values': [(54, '6,6%'), (77, '11,7%'), (288, '19,8%'), (315, '42,4%')]},
+    {'group': 'baho', 'icon': 'thumb-up', 'label': 'Ijobiy baho', 'note': '', 'values': [(210, '25,7%'), (180, '27,4%'), (421, '29,0%'), (223, '30,0%')]},
+    {'group': 'baho', 'icon': 'thumb-down', 'label': 'Salbiy baho', 'note': '', 'values': [(417, '51,1%'), (385, '58,7%'), (860, '59,2%'), (476, '64,1%')]},
+    {'group': 'baho', 'icon': 'equals', 'label': 'Neytral baho', 'note': '', 'values': [(189, '23,2%'), (91, '13,9%'), (171, '11,8%'), (44, '5,9%')]},
+]
+
+
 def index(request):
     counts = DictionaryEntry.objects.values('category').annotate(total=Count('id'))
     category_totals = {item['category']: item['total'] for item in counts}
@@ -62,7 +75,7 @@ def index(request):
         {'icon': 'book-open', 'value': f"{category_totals.get('red', 0):,}".replace(',', ' '), 'label': 'Lug‘atda uchramaydigan', 'note': 'red'},
         {'icon': 'refresh', 'value': f"{category_totals.get('purple', 0):,}".replace(',', ' '), 'label': 'Okkazional iboralar', 'note': 'purple'},
     ]
-    return render(request, 'index.html', {'stats': stats})
+    return render(request, 'index.html', {'stats': stats, 'layer_stats': LAYER_STATS})
 
 
 def dictionary(request):

@@ -78,6 +78,88 @@
     </div>
 </section>
 
+<section class="layers-section">
+    <div class="container">
+        <div class="layers-card reveal">
+            <div class="layers-header-bar">
+                <span class="layers-header-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H15M9 16H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <h2>Ma’naviy-semantik qatlamlar va baho bo‘yicha</h2>
+            </div>
+
+            <div class="layers-table-wrap">
+                <table class="layers-table">
+                    <thead>
+                        <tr>
+                            <th class="layers-col-main">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5-10-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                                Qatlam / baho
+                            </th>
+                            <th class="layers-col-aynan">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                1.1. Lug‘ida aynan bor
+                            </th>
+                            <th class="layers-col-variant">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 8a8.5 8.5 0 0 0-14.8-4.3M3 16a8.5 8.5 0 0 0 14.8 4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v5h-5M3 21v-5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                1.2. Variandosh bor
+                            </th>
+                            <th class="layers-col-yoq">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M6 18L18 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                                1.3. Lug‘atda yo‘q
+                            </th>
+                            <th class="layers-col-okkazional">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                II. Okkazional
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in layer_stats %}
+                        <tr class="layers-row{% if row.group == 'baho' %} layers-row-baho{% endif %}">
+                            <td class="layers-col-main">
+                                <span class="layers-row-icon layers-icon-{{ row.icon }}" aria-hidden="true">
+                                    {% if row.icon == 'person' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c1.4-3.6 4.1-5.5 7-5.5s5.6 1.9 7 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    {% elif row.icon == 'brain' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 4.5c-2 0-3.5 1.6-3.5 3.3C4.2 8.2 3 9.7 3 11.5c0 1.5.8 2.7 2 3.3-.1.3-.1.6-.1 1 0 2.2 1.8 3.7 3.8 3.7.4 0 .8-.1 1.1-.2M9 4.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5M9 4.5v15M15 4.5c2 0 3.5 1.6 3.5 3.3 1.3.4 2.5 1.9 2.5 3.7 0 1.5-.8 2.7-2 3.3.1.3.1.6.1 1 0 2.2-1.8 3.7-3.8 3.7-.4 0-.8-.1-1.1-.2M15 4.5v15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    {% elif row.icon == 'mosque' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v3M10 7a2 2 0 1 1 4 0c0 1.5-2 2.5-2 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4 20v-5c0-3 3.5-5 8-5s8 2 8 5v5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M2 20h20M7 20v-3M17 20v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                                    {% elif row.icon == 'scales' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v18M7 21h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 6l-6 1M12 6l6 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 9l3-2 3 2-3 6-3-6ZM15 9l3-2 3 2-3 6-3-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                                    {% elif row.icon == 'ornament' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM12 16c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM2 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0ZM16 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg>
+                                    {% elif row.icon == 'paw' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="9" r="1.6" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="7" r="1.6" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="9" r="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M12 12.5c-3 0-5.5 2-5.5 4.3 0 1.4 1.2 2.2 2.6 1.8.9-.3 1.8-.5 2.9-.5s2 .2 2.9.5c1.4.4 2.6-.4 2.6-1.8 0-2.3-2.5-4.3-5.5-4.3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                                    {% elif row.icon == 'thumb-up' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 11v9H4v-9h3Zm0 0 4.5-7a1.8 1.8 0 0 1 3 1.4V9h4.2a2 2 0 0 1 1.9 2.7l-2 6A2 2 0 0 1 16.7 20H10a3 3 0 0 1-3-3v-6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                    {% elif row.icon == 'thumb-down' %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 13V4h3v9h-3Zm0 0-4.5 7a1.8 1.8 0 0 1-3-1.4V15H5.3a2 2 0 0 1-1.9-2.7l2-6A2 2 0 0 1 7.3 5H14a3 3 0 0 1 3 3v5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                    {% else %}
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 9h14M5 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    {% endif %}
+                                </span>
+                                <span class="layers-row-label">
+                                    {{ row.label }}
+                                    {% if row.note %}<small>({{ row.note }})</small>{% endif %}
+                                </span>
+                            </td>
+                            {% for value, pct in row.values %}
+                            <td class="layers-col-value"><strong>{{ value }}</strong> <span class="layers-pct">({{ pct }})</span></td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="goals-bottom-strip" aria-hidden="true">
+        <img src="{% static 'images/stats-banner-bottom.png' %}" alt="" />
+    </div>
+</section>
+
 <section class="goals-section">
     <div class="container">
         <div class="goals-top reveal">
