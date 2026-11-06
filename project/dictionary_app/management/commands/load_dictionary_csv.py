@@ -2,7 +2,10 @@ import csv
 import os
 from pathlib import Path
 
-VARIANT_INFO_KEY = 'Lug' + chr(0x2018) + 'atdagi variantdoshi va beti'
+VARIANT_INFO_KEYS = [
+    'Lug' + chr(0x2018) + 'atdagi variantdoshi va beti',
+    'Lug' + chr(0x2018) + 'atdagi o' + chr(0x2018) + 'rni (2022)',
+]
 
 from django.core.management.base import BaseCommand
 
@@ -43,7 +46,12 @@ class Command(BaseCommand):
                     notes = (row.get("Lingvoma’naviy xususiyati") or '').strip()
                     pages = (row.get('Bet(lar)') or '').strip()
                     example = (row.get('Frazeologik birlik qatnashgan gap') or '').strip()
-                    variant_info = (row.get(VARIANT_INFO_KEY) or '').strip()
+                    variant_info = ''
+                    for key in VARIANT_INFO_KEYS:
+                        value = (row.get(key) or '').strip()
+                        if value:
+                            variant_info = value
+                            break
 
                     obj, is_created = DictionaryEntry.objects.get_or_create(
                         title=title,
