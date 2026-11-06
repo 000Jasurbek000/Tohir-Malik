@@ -12,6 +12,7 @@ class DictionaryEntry(models.Model):
     title = models.CharField(max_length=255, db_index=True)
     meaning = models.TextField(blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, db_index=True)
+    variant_info = models.TextField(blank=True)
     notes = models.TextField(blank=True)
     example = models.TextField(blank=True)
     pages = models.CharField(max_length=255, blank=True)

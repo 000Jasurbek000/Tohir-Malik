@@ -2,6 +2,8 @@ import csv
 import os
 from pathlib import Path
 
+VARIANT_INFO_KEY = 'Lug' + chr(0x2018) + 'atdagi variantdoshi va beti'
+
 from django.core.management.base import BaseCommand
 
 from dictionary_app.models import DictionaryEntry
@@ -41,6 +43,7 @@ class Command(BaseCommand):
                     notes = (row.get("Lingvoma’naviy xususiyati") or '').strip()
                     pages = (row.get('Bet(lar)') or '').strip()
                     example = (row.get('Frazeologik birlik qatnashgan gap') or '').strip()
+                    variant_info = (row.get(VARIANT_INFO_KEY) or '').strip()
 
                     obj, is_created = DictionaryEntry.objects.get_or_create(
                         title=title,
@@ -50,6 +53,7 @@ class Command(BaseCommand):
                             'notes': notes,
                             'example': example,
                             'pages': pages,
+                            'variant_info': variant_info,
                             'source_file': file_path.name,
                             'raw_row': str(row),
                         },
@@ -60,6 +64,7 @@ class Command(BaseCommand):
                         obj.notes = notes
                         obj.example = example
                         obj.pages = pages
+                        obj.variant_info = variant_info
                         obj.source_file = file_path.name
                         obj.raw_row = str(row)
                         obj.save()

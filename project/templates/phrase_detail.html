@@ -40,6 +40,13 @@
                 <p>{{ phrase.meaning }}</p>
             </div>
 
+            {% if phrase.variant_info %}
+            <div class="detail-section">
+                <h3>Lug‘atdagi variantdoshi va beti</h3>
+                <div class="quote-box-soft">{{ phrase.variant_info|linebreaksbr }}</div>
+            </div>
+            {% endif %}
+
             {% if phrase.description and phrase.description != 'Ma’lumot mavjud emas.' %}
             <div class="detail-section">
                 <h3>Lingvoma‘naviy tavsifi</h3>

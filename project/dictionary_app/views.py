@@ -45,6 +45,7 @@ def _entry_to_dict(entry):
         'pages': entry.pages,
         'notes': entry.notes,
         'example': entry.example,
+        'variant_info': entry.variant_info,
     }
 
 
@@ -164,6 +165,7 @@ def phrase_detail(request):
         'description': (entry.notes if entry else '') or 'Ma’lumot mavjud emas.',
         'example': (entry.example if entry else '') or '',
         'page': (entry.pages if entry else '') or '',
+        'variant_info': (entry.variant_info if entry else '') or '',
     }
     return render(request, 'phrase_detail.html', {'phrase': data, 'related': related})
 
