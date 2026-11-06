@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bosh sahifa | Odamiylik mulki{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-wave"></div>
+    <div class="container hero-grid">
+        <div class="hero-copy fade-up">
+            <span class="section-kicker">Elektron frazeologik lug‘at</span>
+            <h1>
+                <span>Odamiylik mulki</span>
+                <span class="highlight">Frazeologik lug‘ati</span>
+            </h1>
+            <p class="hero-text">
+                Tohir Malikning «Odamiylik mulki» (Axloq kitobi) asarida qo‘llangan frazeologik birliklarni to‘plagan va izohlagan elektron lug‘at.
+            </p>
+
+            <div class="search-box" aria-label="Qidiruv maydoni">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <input id="home-search-input" type="text" placeholder="Frazeologik birlik yoki so‘zni kiriting..." aria-label="Qidirish" />
+                <button id="home-search-button" type="button" class="search-btn">Qidirish</button>
+            </div>
+
+            <div class="hero-actions">
+                <a href="{% url 'dictionary' %}" class="primary-btn">Lug‘atga o‘tish</a>
+                <a href="{% url 'about' %}" class="secondary-btn">Loyiha haqida</a>
+            </div>
+        </div>
+
+        <div class="hero-visual fade-up">
+            <div class="hero-banner">
+                <img src="{% static 'images/bg.png' %}" alt="Tohir Malikning «Odamiylik mulki» kitobi va muallif" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-banner" id="stats">
+    <div class="stats-banner-content">
+        <h1>Lug‘at statistikasi</h1>
+        <p>«Odamiylik mulki» asarida qayd etilgan frazeologik birliklar bo‘yicha asosiy ko‘rsatkichlar</p>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-rich-grid">
+            {% for stat in stats %}
+            <article class="stat-card-rich reveal">
+                <span class="stat-card-rich-corner" aria-hidden="true"></span>
+                <span class="stat-card-rich-icon" aria-hidden="true">
+                    {% if stat.icon == 'layers' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 13l9 5 9-5M3 10.5l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {% elif stat.icon == 'book' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4.5h5.5A3.5 3.5 0 0 1 12 8v12a3 3 0 0 0-3-3H3V4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M21 4.5h-5.5A3.5 3.5 0 0 0 12 8v12a3 3 0 0 1 3-3h6V4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    {% elif stat.icon == 'feather' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.2 12.2a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8L2 22M17.5 15H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {% elif stat.icon == 'book-open' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H15M9 16H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    {% elif stat.icon == 'refresh' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 8a8.5 8.5 0 0 0-14.8-4.3M3 16a8.5 8.5 0 0 0 14.8 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v5h-5M3 21v-5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {% elif stat.icon == 'not-found' %}
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M14.8 9.2L9.2 14.8M9.2 9.2l5.6 5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    {% endif %}
+                </span>
+                <span>
+                    <p class="stat-card-rich-value">{{ stat.value }}</p>
+                    <p class="stat-card-rich-label">{{ stat.label }}{% if stat.note %}<span>{{ stat.note }}</span>{% endif %}</p>
+                </span>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="goals-section">
+    <div class="container">
+        <div class="goals-top reveal">
+            <div class="goals-kicker-row">
+                <span class="ornament-line" aria-hidden="true"></span>
+                <span class="goals-badge">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>
+                    Loyiha maqsadi
+                </span>
+                <span class="ornament-line last" aria-hidden="true"></span>
+            </div>
+            <p class="goals-text">Tohir Malikning «Odamiylik mulki» asarida qo‘llangan frazeologik birliklarni aniqlash, tasniflash va izohli elektron lug‘at ko‘rinishida taqdim etish.</p>
+        </div>
+
+        <div class="goals-skyline">
+            <img src="{% static 'images/skyline-book-strip.png' %}" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="goals-grid">
+            <article class="goals-card reveal">
+                <span class="goals-card-corner tl" aria-hidden="true"></span>
+                <span class="goals-card-corner br" aria-hidden="true"></span>
+                <span class="goals-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 19V6a2 2 0 0 1 2-2h3v17H6a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4h6a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Lug‘at imkoniyatlari</h3>
+                <ul class="goals-check-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Frazeologik birliklarni qidirish
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Izoh va ma’no sharhi
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Asardagi kontekst misollar
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Tasnif bo‘yicha ko‘rish
+                    </li>
+                </ul>
+            </article>
+
+            <article class="goals-card reveal">
+                <span class="goals-card-corner tl" aria-hidden="true"></span>
+                <span class="goals-card-corner br" aria-hidden="true"></span>
+                <span class="goals-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 13l9 5 9-5M3 10.5l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Tadqiqot yondashuvi</h3>
+                <ul class="goals-check-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Frazeologik birliklarni aniqlash
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Ularni lingvomadaniy tahlil qilish
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Tasnif va statistika yuritish
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Natijalarni elektron lug‘atda jamlash
+                    </li>
+                </ul>
+            </article>
+
+            <article class="goals-card reveal">
+                <span class="goals-card-corner tl" aria-hidden="true"></span>
+                <span class="goals-card-corner br" aria-hidden="true"></span>
+                <span class="goals-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="9" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <h3>Texnologik asos</h3>
+                <ul class="goals-check-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Zamonaviy veb-texnologiyalar
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Tezkor va qulay qidiruv tizimi
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Ma’lumotlar bazasi asosida ishlash
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Turli qurilmalarda moslashuvchanlik
+                    </li>
+                </ul>
+            </article>
+
+            <article class="goals-card reveal">
+                <span class="goals-card-corner tl" aria-hidden="true"></span>
+                <span class="goals-card-corner br" aria-hidden="true"></span>
+                <span class="goals-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Foydalanuvchilar</h3>
+                <ul class="goals-check-list">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Tilshunoslar va tadqiqotchilar
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Oliy ta’lim talabalari
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        O‘qituvchilar
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 12.3l2.3 2.3 4.7-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Adabiyot ixlosmandlari
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </div>
+
+    <div class="goals-bottom-strip" aria-hidden="true">
+        <img src="{% static 'images/stats-banner-bottom.png' %}" alt="" />
+    </div>
+</section>
+
+<section class="quote-section" style="background-image: url('{% static 'images/Ornate Uzbek Architecture Book Background.png' %}');">
+    <div class="container">
+        <div class="quote-bubble reveal">
+            <span class="quote-mark-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 7c-2.2 0-4 1.8-4 4v6h6v-6H6.2C6.5 9.3 7.8 8 9.5 8V7C8.8 7 7.9 7 7 7Z" fill="currentColor"/><path d="M17 7c-2.2 0-4 1.8-4 4v6h6v-6h-2.8c.3-1.7 1.6-3 3.3-3V7c-.7 0-1.6 0-2.5 0Z" fill="currentColor"/></svg>
+            </span>
+            <blockquote>«Insof, mehr-oqibat va odamiylik — insonning eng katta mulki».</blockquote>
+            <span class="quote-author-ribbon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.2 12.2a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8L2 22M17.5 15H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Tohir Malik
+            </span>
+        </div>
+    </div>
+</section>
+{% endblock %}

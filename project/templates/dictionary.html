@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lug‘at | Odamiylik mulki{% endblock %}
+
+{% block content %}
+<section class="page-banner-lite">
+    <div class="container">
+        <div class="page-banner-lite-icon-row">
+            <span class="ornament-line" aria-hidden="true"></span>
+            <span class="page-banner-lite-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H15M9 16H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="ornament-line last" aria-hidden="true"></span>
+        </div>
+        <h1>Frazeologik lug‘at</h1>
+        <p>«Odamiylik mulki» asarida qo‘llangan frazeologik birliklar izohli lug‘ati</p>
+    </div>
+</section>
+
+<section class="dict-section">
+    <div class="container dict-layout">
+        <aside class="dict-sidebar">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 13l9 5 9-5M3 10.5l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Turkumlar
+            </h3>
+            <ul class="dict-sidebar-list">
+                <li>
+                    <a href="?category=all&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="dict-sidebar-item{% if current_category == 'all' %} active{% endif %}">
+                        <span><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/></svg>Barchasi</span>
+                        <span class="dict-count">{{ category_totals.all }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="?category=green&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="dict-sidebar-item{% if current_category == 'green' %} active{% endif %}">
+                        <span><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H15M9 16H15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Aynan berilganlar</span>
+                        <span class="dict-count">{{ category_totals.green }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="?category=yellow&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="dict-sidebar-item{% if current_category == 'yellow' %} active{% endif %}">
+                        <span><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 8a8.5 8.5 0 0 0-14.8-4.3M3 16a8.5 8.5 0 0 0 14.8 4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v5h-5M3 21v-5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Variantdoshlari</span>
+                        <span class="dict-count">{{ category_totals.yellow }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="?category=red&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="dict-sidebar-item{% if current_category == 'red' %} active{% endif %}">
+                        <span><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M14.8 9.2L9.2 14.8M9.2 9.2l5.6 5.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Lug‘atda uchramaydi</span>
+                        <span class="dict-count">{{ category_totals.red }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="?category=purple&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}" class="dict-sidebar-item{% if current_category == 'purple' %} active{% endif %}">
+                        <span><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.2 12.2a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Okkazional iboralar</span>
+                        <span class="dict-count">{{ category_totals.purple }}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="dict-sidebar-skyline" aria-hidden="true">
+                <img src="{% static 'images/stats-banner-bottom.png' %}" alt="" />
+            </div>
+        </aside>
+
+        <div class="dict-main">
+            <div class="dict-search-row">
+                <label class="search-field" aria-label="Qidiruv maydoni">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <input id="dict-search-input" type="text" placeholder="Frazeologik birlikni qidiring..." aria-label="Frazeologik birlikni qidiring" value="{{ search_query|default:'' }}" />
+                </label>
+                <button id="dict-search-button" type="button" class="search-btn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/><path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Qidirish
+                </button>
+            </div>
+
+            <div class="dict-results-head">
+                <p>Jami: <strong>{{ total_matching }}</strong> ta natija topildi{% if search_query %} — «{{ search_query }}» bo‘yicha{% endif %}</p>
+            </div>
+
+            <nav class="alpha-nav" aria-label="Alfavit navigatsiyasi">
+                <button type="button" class="alpha-tag" data-letter="A">A</button>
+                <button type="button" class="alpha-tag" data-letter="B">B</button>
+                <button type="button" class="alpha-tag" data-letter="D">D</button>
+                <button type="button" class="alpha-tag" data-letter="E">E</button>
+                <button type="button" class="alpha-tag" data-letter="F">F</button>
+                <button type="button" class="alpha-tag" data-letter="G">G</button>
+                <button type="button" class="alpha-tag" data-letter="H">H</button>
+                <button type="button" class="alpha-tag" data-letter="I">I</button>
+                <button type="button" class="alpha-tag" data-letter="J">J</button>
+                <button type="button" class="alpha-tag" data-letter="K">K</button>
+                <button type="button" class="alpha-tag" data-letter="L">L</button>
+                <button type="button" class="alpha-tag" data-letter="M">M</button>
+                <button type="button" class="alpha-tag" data-letter="N">N</button>
+                <button type="button" class="alpha-tag" data-letter="O">O</button>
+                <button type="button" class="alpha-tag" data-letter="P">P</button>
+                <button type="button" class="alpha-tag" data-letter="Q">Q</button>
+                <button type="button" class="alpha-tag" data-letter="R">R</button>
+                <button type="button" class="alpha-tag" data-letter="S">S</button>
+                <button type="button" class="alpha-tag" data-letter="T">T</button>
+                <button type="button" class="alpha-tag" data-letter="U">U</button>
+                <button type="button" class="alpha-tag" data-letter="V">V</button>
+                <button type="button" class="alpha-tag" data-letter="X">X</button>
+                <button type="button" class="alpha-tag" data-letter="Y">Y</button>
+                <button type="button" class="alpha-tag" data-letter="Z">Z</button>
+                <button type="button" class="alpha-tag" data-letter="O‘">O‘</button>
+                <button type="button" class="alpha-tag" data-letter="G‘">G‘</button>
+                <button type="button" class="alpha-tag" data-letter="Sh">Sh</button>
+                <button type="button" class="alpha-tag" data-letter="Ch">Ch</button>
+                <button type="button" class="alpha-tag" data-letter="Ng">Ng</button>
+            </nav>
+
+            <div class="dict-card-list">
+                {% for phrase in phrases %}
+                <article class="dict-card category-{{ phrase.category }}" data-category="{{ phrase.category }}">
+                    <button type="button" class="dict-bookmark" aria-label="Saqlab qo‘yish">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.6L6 21V4.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="dict-card-main">
+                        <h2>{{ phrase.title }}</h2>
+                        <div class="dict-card-badges">
+                            <span class="dict-badge dict-badge-{{ phrase.category }}">{{ phrase.category_label }}</span>
+                        </div>
+                        <p class="dict-card-meaning"><strong>Ma’nosi:</strong> {{ phrase.meaning }}</p>
+                    </div>
+                    <a href="{% url 'phrase_detail' %}?title={{ phrase.title|urlencode }}" class="dict-detail-btn">
+                        Batafsil
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+
+            <p class="dict-empty-state" hidden>Bu toifa bo‘yicha hozircha namuna ma’lumot kiritilmagan.</p>
+
+            <div class="dict-pagination-wrap">
+                <div class="dict-page-size" aria-label="Ko‘rsatish soni">
+                    <label class="dict-page-size-label" for="dict-page-size-select">
+                        Ko‘rsatish
+                    </label>
+                    <select id="dict-page-size-select" class="dict-page-size-select" aria-label="Sahifa soni" onchange="const params = new URLSearchParams(window.location.search); params.set('page_size', this.value); params.delete('page'); const q = document.getElementById('dict-search-input')?.value?.trim(); if (q) params.set('q', q); window.location.href = window.location.pathname + '?' + params.toString();">
+                        <option value="25" {% if current_page_size == '25' %}selected{% endif %}>25</option>
+                        <option value="50" {% if current_page_size == '50' %}selected{% endif %}>50</option>
+                        <option value="100" {% if current_page_size == '100' %}selected{% endif %}>100</option>
+                        <option value="500" {% if current_page_size == '500' %}selected{% endif %}>500</option>
+                        <option value="all" {% if current_page_size == 'all' %}selected{% endif %}>Barchasi</option>
+                    </select>
+                </div>
+
+                {% if total_pages > 1 %}
+                <div class="dict-pager" aria-label="Sahifalar">
+                    {% if current_page > 1 %}
+                    <a href="?category={{ current_category }}&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}&page={{ current_page|add:"-1" }}" class="dict-pager-btn" aria-label="Oldingi sahifa">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    {% else %}
+                    <span class="dict-pager-btn disabled" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {% endif %}
+
+                    {% for p in page_numbers %}
+                        {% if p == '...' %}
+                        <span class="dict-pager-ellipsis" aria-hidden="true">…</span>
+                        {% elif p == current_page %}
+                        <span class="dict-pager-btn active" aria-current="page">{{ p }}</span>
+                        {% else %}
+                        <a href="?category={{ current_category }}&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}&page={{ p }}" class="dict-pager-btn">{{ p }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if current_page < total_pages %}
+                    <a href="?category={{ current_category }}&page_size={{ current_page_size }}{% if search_query %}&q={{ search_query|urlencode }}{% endif %}&page={{ current_page|add:"1" }}" class="dict-pager-btn" aria-label="Keyingi sahifa">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    {% else %}
+                    <span class="dict-pager-btn disabled" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+            <section class="dict-legend-section" aria-labelledby="dict-legend-title">
+                <div class="dict-legend-head">
+                    <span class="section-kicker">Aniqlashtirish</span>
+                    <h3 id="dict-legend-title">Lug‘atdagi ranglar va ma’nolari</h3>
+                </div>
+
+                <div class="dict-legend-text">
+                    <p><strong>Lug‘atda aynan berilgan:</strong> ibora lug‘atda bosh so‘z, havola maqolasi yoki «Varianti:» qatorida berilgan; faqat kiritish qoidasi bilan farq qiladi.</p>
+                    <p><strong>Variantdosh berilgan:</strong> iboraning o‘zi lug‘atda yo‘q, lekin unga yaqin variant shakli bor; kengaygan, qisqargan, bo‘lishsiz yoki ma’nodosh bilan almashgan shakllar kiradi.</p>
+                </div>
+
+                <div class="dict-legend-grid">
+                    <div class="dict-legend-item dict-legend-green">
+                        <span class="dict-legend-swatch" aria-hidden="true"></span>
+                        <div>
+                            <strong>Yashil</strong>
+                            <p>Lug‘atda «aynan berilgan» deb hisoblanadi: ibora lug‘atda bosh so‘z, havola maqolasi yoki «Varianti:» qatorida berilgan; faqat kiritish qoidasi bilan farq qiladi.</p>
+                        </div>
+                    </div>
+                    <div class="dict-legend-item dict-legend-yellow">
+                        <span class="dict-legend-swatch" aria-hidden="true"></span>
+                        <div>
+                            <strong>Sariq</strong>
+                            <p>«Variantdosh berilgan»: iboraning o‘zi lug‘atda yo‘q, lekin unga yaqin variant shakli bor; kengaygan, qisqargan, bo‘lishsiz yoki ma’nodosh bilan almashgan shakllar kiradi.</p>
+                        </div>
+                    </div>
+                    <div class="dict-legend-item dict-legend-red">
+                        <span class="dict-legend-swatch" aria-hidden="true"></span>
+                        <div>
+                            <strong>Qizil</strong>
+                            <p>Lug‘atda uchramaydi: ibora lug‘atda umuman mavjud emas.</p>
+                        </div>
+                    </div>
+                    <div class="dict-legend-item dict-legend-purple">
+                        <span class="dict-legend-swatch" aria-hidden="true"></span>
+                        <div>
+                            <strong>Binafsha</strong>
+                            <p>Muallif nutqiga tegishli okkazional iboralar: asarning muallifiga xos, umumiy lug‘atga kirmaydigan iboralardir.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock %}

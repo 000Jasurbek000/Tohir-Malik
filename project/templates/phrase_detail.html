@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ phrase.title }} | Odamiylik mulki{% endblock %}
+
+{% block content %}
+<section class="page-banner-lite">
+    <div class="container">
+        <div class="page-banner-lite-icon-row">
+            <span class="ornament-line" aria-hidden="true"></span>
+            <span class="page-banner-lite-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 18V8.5A1.5 1.5 0 0 1 6.5 7H17.5A1.5 1.5 0 0 1 19 8.5V18M9 7V5.5A1.5 1.5 0 0 1 10.5 4H13.5A1.5 1.5 0 0 1 15 5.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12H15M9 16H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="ornament-line last" aria-hidden="true"></span>
+        </div>
+        <h1>Ibora tafsiloti</h1>
+        <p>Frazeologik birlik haqida to‘liq ma’lumot</p>
+    </div>
+</section>
+
+<section class="detail-back-section">
+    <div class="container">
+        <a href="{% url 'dictionary' %}" class="dict-back-btn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Lug‘atga qaytish
+        </a>
+    </div>
+</section>
+
+<section class="detail-main-section">
+    <div class="container detail-layout">
+        <article class="detail-card category-{{ phrase.category }}">
+            <div class="detail-top">
+                <h1>{{ phrase.title }}</h1>
+                <span class="dict-badge dict-badge-{{ phrase.category }}">{{ phrase.category_label }}</span>
+            </div>
+
+            <div class="detail-section">
+                <h3>Ma’nosi</h3>
+                <p>{{ phrase.meaning }}</p>
+            </div>
+
+            {% if phrase.description and phrase.description != 'Ma’lumot mavjud emas.' %}
+            <div class="detail-section">
+                <h3>Lingvoma‘naviy tavsifi</h3>
+                <p>{{ phrase.description|linebreaksbr }}</p>
+            </div>
+            {% endif %}
+
+            {% if phrase.example %}
+            <div class="detail-section">
+                <h3>Asardan misol</h3>
+                <div class="quote-box-soft">«{{ phrase.example }}»</div>
+            </div>
+            {% endif %}
+
+            {% if phrase.page %}
+            <div class="detail-section">
+                <h3>Asardagi bet</h3>
+                <p>«Odamiylik mulki», {{ phrase.page }}.</p>
+            </div>
+            {% endif %}
+        </article>
+
+        <aside class="aside-panel">
+            <div class="detail-card">
+                <h3>Ma’lumotlar</h3>
+                <ul class="info-list">
+                    <li><span>Turkum</span> <strong>{{ phrase.category_label }}</strong></li>
+                    <li><span>Bet(lar)</span> <strong>{{ phrase.page|default:"—" }}</strong></li>
+                </ul>
+            </div>
+
+            {% if related %}
+            <div class="detail-card">
+                <h3>Shu turkumdagi boshqa iboralar</h3>
+                <ul class="info-list dict-related-list">
+                    {% for item in related %}
+                    <li><a href="{% url 'phrase_detail' %}?title={{ item.title|urlencode }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </aside>
+    </div>
+</section>
+{% endblock %}
