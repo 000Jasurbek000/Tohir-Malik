@@ -542,6 +542,31 @@ section {
     box-shadow: 0 18px 32px rgba(38, 33, 32, 0.08);
 }
 
+.article-card-editorial {
+    padding-top: 30px;
+}
+
+.article-card-index {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.article-card-index::after {
+    content: "";
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--beige));
+    border-radius: 2px;
+}
+
 .feature-card .card-icon,
 .info-card .card-icon {
     width: 52px;
@@ -1176,6 +1201,20 @@ section {
     text-align: center;
     padding: 14px 12px;
     white-space: nowrap;
+}
+
+.layers-table thead th.layers-col-okkazional {
+    white-space: normal;
+}
+
+.layers-table thead th small {
+    display: block;
+    font-weight: 500;
+    font-size: 0.66rem;
+    opacity: 0.85;
+    margin-top: 4px;
+    white-space: normal;
+    line-height: 1.3;
 }
 
 .layers-table thead th svg {
